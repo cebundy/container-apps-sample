@@ -7,7 +7,7 @@ on:
     branches: 
       [ main ]
 
-  # Allow mannually trigger 
+  # Allow manual trigger 
   workflow_dispatch:      
 
 jobs:
@@ -34,8 +34,8 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: ghcr.io/go-app:${{ github.sha }}
-          file: ./go-service/dockerfile
+          tags: ghcr.io/kendallroden/container-apps-store-api-microservice/go-app:${{ github.sha }}
+          file: go-service/dockerfile
 
 
   deploy:
@@ -56,4 +56,4 @@ jobs:
             echo "Installing containerapp extension"
             az extension add --source https://workerappscliextension.blob.core.windows.net/azure-cli-extension/containerapp-0.2.0-py2.py3-none-any.whl --yes
             echo "Starting Deploying"
-            az containerapp update -n go-app -g cappswfdemodec -i ghcr.io/go-app:${{ github.sha }} --registry-login-server ghcr.io --registry-username  ${{ secrets.REGISTRY_USERNAME }} --registry-password ${{ secrets.REGISTRY_PASSWORD }} --debug
+            az containerapp update -n go-app -g cappswfdemodec -i ghcr.io/kendallroden/container-apps-store-api-microservice/go-app:${{ github.sha }} --debug
