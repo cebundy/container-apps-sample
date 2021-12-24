@@ -41,7 +41,7 @@ jobs:
       - name: Build and push container image to registry
         uses: docker/build-push-action@v2
         with:
-          context: ${{ env.directory }}
+          context: ${{ env.DIRECTORY }}
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/go-service:${{ github.sha }}
 
