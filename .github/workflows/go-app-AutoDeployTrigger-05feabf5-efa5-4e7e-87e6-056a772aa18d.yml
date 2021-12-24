@@ -6,6 +6,8 @@ on:
   push:
     branches: 
       [ main ]
+    paths:
+      - 'go-service/**'
 
   # Allow mannually trigger 
   workflow_dispatch:      
@@ -63,4 +65,4 @@ jobs:
             echo "Installing containerapp extension"
             az extension add --source https://workerappscliextension.blob.core.windows.net/azure-cli-extension/containerapp-0.2.0-py2.py3-none-any.whl --yes
             echo "Starting Deploying"
-            az containerapp update -n go-app -g cappswfdemodec -i ghcr.io/go-app:${{ github.sha }} --registry-login-server ghcr.io --registry-username  ${{ secrets.REGISTRY_USERNAME }} --registry-password ${{ secrets.REGISTRY_PASSWORD }} --debug
+            az containerapp update -n go-app -g cappswfdemodec -i ${{ env.REGISTRY }}/${{ env.IMAGE_NAME}}/go-service:${{ github.sha }} --registry-login-server ghcr.io --registry-username  ${{ secrets.REGISTRY_USERNAME }} --registry-password ${{ secrets.REGISTRY_PASSWORD }} --debug
