@@ -35,7 +35,7 @@ jobs:
         with:
           push: true
           tags: ghcr.io/kendallroden/container-apps-store-api-microservice/go-app:${{ github.sha }}
-          file: go-service/Dockerfile
+          file: ./go-service/Dockerfile
 
 
   deploy:
