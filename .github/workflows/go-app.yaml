@@ -8,6 +8,7 @@ on:
       [ main ]
     paths:
       - 'go-service/**'
+      - '.github/workflows/go-app.yaml'
 
   # Allow mannually trigger 
   workflow_dispatch:      
