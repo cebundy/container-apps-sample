@@ -35,7 +35,7 @@ jobs:
         with:
           push: true
           tags: ghcr.io/kendallroden/container-apps-store-api-microservice/go-app:${{ github.sha }}
-          context: ./go-service/
+          context: ./go-service
 
   deploy:
     runs-on: ubuntu-latest
